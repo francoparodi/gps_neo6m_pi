@@ -8,7 +8,6 @@ while True:
     data = serial.Serial(port, baudrate=9600, timeout=0.5)
     newdata = data.readline().decode('ascii', errors='replace')
     if "GPGGA" in newdata:
-        print(newdata)
         nmeaObj = pynmea2.parse(newdata)
         time = nmeaObj.timestamp
         satellites = nmeaObj.num_sats
